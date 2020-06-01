@@ -1,11 +1,15 @@
 import React from 'react';
 import style from './Post.module.css'
 
-const Post = () => {
+const Post = (props) => {
   return (
     <div className={style.posts__history}>
-      <div className={style.posts__history__photo}>I'm</div>
-      <div className={style.posts__history__msg}>Hey, Today I'm create my first React application!</div>
+      <div className={style.posts__history__photo}>
+        {`${props.profile}`}
+      </div>
+      <div className={style.posts__history__msg}>
+        {`${props.message}`}
+      </div>
     </div>
   )
 }
