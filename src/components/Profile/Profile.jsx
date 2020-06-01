@@ -1,5 +1,6 @@
 import React from 'react';
-import style from './../style/css/Profile.module.css'
+import style from './Profile.module.css'
+import Posts from './Posts/Posts';
 
 const Profile = () => {
   return (
@@ -22,17 +23,7 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className={style.profile__posts}>
-        <div className={style.posts__header}>My posts</div>
-        <form className={style.posts__form}>
-          <textarea className={style.posts__form__input} type="text" placeholder="What is new?"></textarea>
-          <input className={style.posts__form__submit} type="submit" value="Sent"></input>
-        </form>
-        <div className={style.posts__history}>
-          <div className={style.posts__history__photo}>I'm</div>
-          <div className={style.posts__history__msg}>Hey, Today I'm create my first React application!</div>
-        </div>
-      </div>
+      <Posts />
     </div>
   )
 }
