@@ -1,0 +1,172 @@
+.profile {
+    -ms-flex-preferred-size: 80%;
+    flex-basis             : 80%;
+    margin-left            : 5px;
+}
+
+.wallpaper__block {
+    display          : -webkit-box;
+    display          : -ms-flexbox;
+    display          : flex;
+    -webkit-box-pack : center;
+    -ms-flex-pack    : center;
+    justify-content  : center;
+    -webkit-box-align: center;
+    -ms-flex-align   : center;
+    align-items      : center;
+    width            : 100%;
+    height           : 230px;
+    overflow         : hidden;
+}
+
+.wallpaper__img {
+    max-width: 100%;
+}
+
+.profile__info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin : 20px 0;
+    height : 150px;
+}
+
+.profile__photo {
+    display          : -webkit-box;
+    display          : -ms-flexbox;
+    display          : flex;
+    -webkit-box-align: center;
+    -ms-flex-align   : center;
+    align-items      : center;
+    -webkit-box-pack : center;
+    -ms-flex-pack    : center;
+    justify-content  : center;
+    width            : 20%;
+    height           : 100%;
+}
+
+.profile__img {
+    max-height: 100%;
+}
+
+.profile__data {
+    display              : -webkit-box;
+    display              : -ms-flexbox;
+    display              : flex;
+    -webkit-box-orient   : vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction   : column;
+    flex-direction       : column;
+    -webkit-box-pack     : justify;
+    -ms-flex-pack        : justify;
+    justify-content      : space-between;
+}
+
+.profile__name {
+    font-size  : 2rem;
+    font-weight: bold;
+}
+
+.profile__dateOfBirth {
+    font-size: 1.2rem;
+}
+
+.profile__city {
+    font-size: 1.2rem;
+}
+
+.profile__education {
+    font-size: 1.2rem;
+}
+
+.profile__webSite {
+    font-size: 1.2rem;
+}
+
+.profile__posts {
+    display              : -webkit-box;
+    display              : -ms-flexbox;
+    display              : flex;
+    -webkit-box-orient   : vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction   : column;
+    flex-direction       : column;
+    margin               : 0 3rem;
+}
+
+.posts__header {
+    width        : 100%;
+    font-size    : 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.posts__form {
+    display              : -webkit-box;
+    display              : -ms-flexbox;
+    display              : flex;
+    -webkit-box-orient   : vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction   : column;
+    flex-direction       : column;
+}
+
+.posts__form__input {
+    width        : 100%;
+    height       : 100px;
+    margin-bottom: 1rem;
+    border       : 3px solid #666699;
+    padding      : 0.7rem;
+    font-size    : 1.3rem;
+}
+
+.posts__form__submit {
+    -ms-flex-item-align: end;
+    align-self         : flex-end;
+    width              : 6rem;
+    height             : 2rem;
+    background-color   : #666699;
+    color              : white;
+    font-size          : 1.1rem;
+}
+
+.posts__history {
+    display              : -webkit-box;
+    display              : -ms-flexbox;
+    display              : flex;
+    -webkit-box-orient   : horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction   : row;
+    flex-direction       : row;
+    -webkit-box-align    : center;
+    -ms-flex-align       : center;
+    align-items          : center;
+    margin-top           : 2.5rem;
+    padding-bottom       : 3rem;
+}
+
+.posts__history__photo {
+    display          : -webkit-box;
+    display          : -ms-flexbox;
+    display          : flex;
+    -webkit-box-pack : center;
+    -ms-flex-pack    : center;
+    justify-content  : center;
+    -webkit-box-align: center;
+    -ms-flex-align   : center;
+    align-items      : center;
+    color            : white;
+    font-size        : 1.3rem;
+    width            : 50px;
+    height           : 50px;
+    background-color : #666699;
+    border-radius    : 50%;
+}
+
+.posts__history__msg {
+    display    : -webkit-box;
+    display    : -ms-flexbox;
+    display    : flex;
+    margin-left: 2rem;
+    max-width  : 50%;
+    word-wrap  : break-word;
+}
