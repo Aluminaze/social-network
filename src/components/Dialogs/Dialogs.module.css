@@ -16,18 +16,6 @@
 	border-right  : 2px solid #666699;
 }
 
-.dialogs__item {
-	font-size  : 1.2rem;
-	font-weight: bold;
-	padding    : 1rem;
-}
-
-.dialogs__active {
-	background-color: #666699;
-	border-radius   : 10px;
-	color           : white;
-}
-
 .dialogs__messages {
 	display       : flex;
 	flex-direction: column;
