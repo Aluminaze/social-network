@@ -1,37 +1,47 @@
 * {
   padding: 0;
-  margin: 0;
-  border: 0;
+  margin : 0;
+  border : 0;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  box-sizing        : border-box;
 }
 
-:focus, :active {
+:focus,
+:active {
   outline: none;
 }
 
-a:focus, a:active {
+a:focus,
+a:active {
   outline: none;
 }
 
-nav, footer, header, aside {
+nav,
+footer,
+header,
+aside {
   display: block;
 }
 
-html, body {
-  height: 100%;
-  width: 100%;
-  font-size: 100%;
-  line-height: 1;
-  font-size: 14px;
-  -ms-text-size-adjust: 100%;
+html,
+body {
+  height               : 100%;
+  width                : 100%;
+  font-size            : 100%;
+  line-height          : 1;
+  font-size            : 14px;
+  -ms-text-size-adjust : 100%;
   -moz-text-size-adjust: 100%;
 }
 
-input, button, textarea {
+input,
+button,
+textarea {
   font-family: inherit;
 }
 
@@ -45,10 +55,11 @@ button {
 
 button::-moz-focus-inner {
   padding: 0;
-  border: 0;
+  border : 0;
 }
 
-a, a:visited {
+a,
+a:visited {
   text-decoration: none;
 }
 
@@ -64,25 +75,32 @@ img {
   vertical-align: top;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-size: inherit;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size  : inherit;
   font-weight: inherit;
 }
 
 .container {
-  width: 1180px;
+  width : 1180px;
   margin: 0 auto;
+  height: 100vh;
 }
 
 .wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  display                : -webkit-box;
+  display                : -ms-flexbox;
+  display                : flex;
+  height                 : 100%;
+  -webkit-box-orient     : horizontal;
+  -webkit-box-direction  : normal;
+  -ms-flex-direction     : row;
+  flex-direction         : row;
   -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
-  margin: 10px 0;
+  flex-basis             : 100%;
+  margin                 : 10px 0;
 }
