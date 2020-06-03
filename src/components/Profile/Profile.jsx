@@ -2,7 +2,13 @@ import React from 'react';
 import style from './Profile.module.css'
 import Posts from './Posts/Posts';
 
-const Profile = () => {
+const Profile = () => { 
+  let data = [
+    { id: 0, message: "I'm create this application with React technology!", likes: 23 },
+    { id: 0, message: "It's my second post on my page :)", likes: 12 },
+    { id: 0, message: "It's my first post on my page. WoW!!!", likes: 5 },
+  ]
+
   return (
     <div className={style.profile}>
       <div className={style.wallpaper__block}>
@@ -23,7 +29,7 @@ const Profile = () => {
         </div>
       </div>
 
-      <Posts />
+      <Posts postsData={data}/>
     </div>
   )
 }
