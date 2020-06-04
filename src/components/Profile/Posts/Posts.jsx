@@ -9,7 +9,7 @@ const Posts = (props) => {
 
   let addPost = () => {
     let text = newPostElement.current.value;
-    alert(`${text}`)
+    if(text) alert(`${text}`)
   }
 
   let postsItems = props.postsData.map(post => <Post profile="I'm" message={post.message} likes={post.likes} />)

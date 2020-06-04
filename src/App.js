@@ -12,33 +12,35 @@ import Settings from './components/Settings/Settings';
 const App = (props) => {
   return (
     <BrowserRouter>
-      <div className="container">
+      <section className="container">
         <Header />
         <section className="wrapper">
           <NavBar />
-          <Switch>
-            <Route path="/profile"
-              render={() => <Profile
-                postsData={props.receivedData.posts} />}
-            />
+          <section className="content">
+            <Switch>
+              <Route path="/profile"
+                render={() => <Profile
+                  postsData={props.receivedData.posts} />}
+              />
 
-            <Route path="/dialogs"
-              render={() => <Dialogs
-                dialogsData={props.receivedData.dialogs}
-                messagesData={props.receivedData.messages} />}
-            />
+              <Route path="/dialogs"
+                render={() => <Dialogs
+                  dialogsData={props.receivedData.dialogs}
+                  messagesData={props.receivedData.messages} />}
+              />
 
-            <Route path="/news"
-              render={() => <News />} />
-              
-            <Route path="/music"
-              render={() => <Music />} />
-              
-            <Route path="/settings"
-              render={() => <Settings />} />
-          </Switch>
+              <Route path="/news"
+                render={() => <News />} />
+
+              <Route path="/music"
+                render={() => <Music />} />
+
+              <Route path="/settings"
+                render={() => <Settings />} />
+            </Switch>
+          </section>
         </section>
-      </div>
+      </section>
     </BrowserRouter>
   );
 }
