@@ -17,10 +17,39 @@
 }
 
 .dialogs__messages {
+	display        : flex;
+	flex-direction : column;
+	justify-content: space-between;
+	height         : 100%;
+	flex-basis     : 70%;
+	height         : 100%;
+	font-size      : 1.1rem;
+	padding        : 20px;
+}
+
+.dialogs__messages__list{
+	height: 100%;
+	overflow: scroll;
+	margin-bottom: 1rem;
+}
+
+.newMessage__form {
 	display       : flex;
 	flex-direction: column;
-	flex-basis    : 70%;
-	height        : 100%;
-	font-size     : 1.1rem;
-	padding       : 20px;
+}
+
+.newMessage__form__text {
+	border       : 1px solid #666699;
+	border-radius: 10px;
+	width        : 100%;
+	height       : 70px;
+	padding      : 0.6rem;
+	margin: 0.5rem 0;
+}
+
+.newMessage__form__button {
+	background-color: #666699;
+	color           : white;
+	padding         : .4rem;
+	border-radius   : 10px;
 }
