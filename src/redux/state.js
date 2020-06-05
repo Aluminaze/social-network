@@ -1,16 +1,18 @@
+import { rerenderEntireThree } from "../render"
+
 let state = {
     posts: [
-        { id: 0, message: "I'm create this application with React technology!", likes: 23 },
-        { id: 0, message: "It's my second post on my page :)", likes: 12 },
-        { id: 0, message: "It's my first post on my page. WoW!!!", likes: 5 },
-        { id: 0, message: "Hi!", likes: 1 },
-        { id: 0, message: "Hi!", likes: 1 },
-        { id: 0, message: "Hi!", likes: 1 },
-        { id: 0, message: "Hi!", likes: 1 },
-        { id: 0, message: "Hi!", likes: 1 },
-        { id: 0, message: "Hi!", likes: 1 },
-        { id: 0, message: "Hi!", likes: 1 },
-        { id: 0, message: "Hi!", likes: 1 }
+        { id: 0, message: "I'm create this application with React technology!", likesCount: 23 },
+        { id: 0, message: "It's my second post on my page :)", likesCount: 12 },
+        { id: 0, message: "It's my first post on my page. WoW!!!", likesCount: 5 },
+        { id: 0, message: "Hi!", likesCount: 1 },
+        { id: 0, message: "Hi!", likesCount: 1 },
+        { id: 0, message: "Hi!", likesCount: 1 },
+        { id: 0, message: "Hi!", likesCount: 1 },
+        { id: 0, message: "Hi!", likesCount: 1 },
+        { id: 0, message: "Hi!", likesCount: 1 },
+        { id: 0, message: "Hi!", likesCount: 1 },
+        { id: 0, message: "Hi!", likesCount: 1 }
     ],
     messages: [
         { id: 1, message: "Hi!" },
@@ -25,6 +27,18 @@ let state = {
         { id: 6, name: "Bessy" },
         { id: 7, name: "Vegas" }
     ]
+}
+
+export let addPost = (newMessage) => {
+    let newPost = {
+        id: 0,
+        message: newMessage,
+        likesCount: 0
+    }
+
+    state.posts.push(newPost)
+
+    rerenderEntireThree(state);
 }
 
 export default state;

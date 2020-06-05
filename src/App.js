@@ -20,7 +20,8 @@ const App = (props) => {
             <Switch>
               <Route path="/profile"
                 render={() => <Profile
-                  postsData={props.receivedData.posts} />}
+                  postsData={props.receivedData.posts} 
+                  addPost={props.addPost}/>}
               />
 
               <Route path="/dialogs"
