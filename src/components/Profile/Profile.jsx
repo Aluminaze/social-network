@@ -3,7 +3,7 @@ import style from './Profile.module.css'
 import Posts from './Posts/Posts';
 import { addPost } from '../../redux/state';
 
-const Profile = (props) => { 
+const Profile = (props) => {
   return (
     <div className={style.profile}>
       <div className={style.wallpaper__block}>
@@ -24,7 +24,12 @@ const Profile = (props) => {
         </div>
       </div>
 
-      <Posts postsData={props.postsData} addPost={addPost}/>
+      <Posts
+        postsData={props.postsData}
+        addPost={addPost}
+        newPostText={props.newPostText}
+        updateNewPostText={props.updateNewPostText}
+      />
     </div>
   )
 }

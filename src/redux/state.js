@@ -1,6 +1,7 @@
 import { rerenderEntireThree } from "../render"
 
 let state = {
+    newPostText: "new text...",
     posts: [
         { id: 0, message: "I'm create this application with React technology!", likesCount: 23 },
         { id: 0, message: "It's my second post on my page :)", likesCount: 12 },
@@ -13,7 +14,7 @@ let state = {
         { id: 0, message: "Hi!", likesCount: 1 },
         { id: 0, message: "Hi!", likesCount: 1 },
         { id: 0, message: "Hi!", likesCount: 1 }
-    ],
+    ],    
     messages: [
         { id: 1, message: "Hi!" },
         { id: 2, message: "Whatsaaaaaaap?" }
@@ -37,6 +38,13 @@ export let addPost = (newMessage) => {
     }
 
     state.posts.push(newPost)
+    state.newPostText = '';
+
+    rerenderEntireThree(state);
+}
+
+export let updateNewPostText = (newText) => {
+    state.newPostText = newText;
 
     rerenderEntireThree(state);
 }
