@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import style from './Profile.module.css'
-import Posts from './Posts/Posts';
-import { addPost } from '../../redux/state';
+import Posts from './Posts/Posts'
+import { addPost } from '../../redux/state'
 
 const Profile = (props) => {
   return (
@@ -34,4 +34,4 @@ const Profile = (props) => {
   )
 }
 
-export default Profile;
+export default Profile

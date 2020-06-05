@@ -1,22 +1,22 @@
-import React from 'react';
+import React from 'react'
 import style from './Posts.module.css'
-import Post from './Post/Post';
+import Post from './Post/Post'
 
 
 
 const Posts = (props) => {
-  let newPostElement = React.createRef();
+  let newPostElement = React.createRef()
   
   let pushPost = () => {
     let text = newPostElement.current.value;
     if(text) {
-      props.addPost(text);
+      props.addPost(text)
     }
   }
 
   let onChange = () => {
-    let text = newPostElement.current.value;
-    props.updateNewPostText(text);
+    let text = newPostElement.current.value
+    props.updateNewPostText(text)
   }
 
   let postsItems = props.postsData.map(post => <Post profile="I'm" message={post.message} likes={post.likes} />)

@@ -1,21 +1,23 @@
-import React from 'react';
-import style from './Dialogs.module.css';
-import DialogItem from './DialogItem/DialogItem';
-import Message from './Message/Message';
+import React from 'react'
+import style from './Dialogs.module.css'
+import DialogItem from './DialogItem/DialogItem'
+import Message from './Message/Message'
 
 const Dialogs = (props) => {
 
     let dialogsItems = props.dialogsData.map(item => <DialogItem name={item.name} id={item.id} />)
     let messageItems = props.messagesData.map(msg => <Message message={msg.message} />)
 
-    let newMessageElement = React.createRef();
+    let newMessageElement = React.createRef()
 
     let sentNewMessage = () => {
-        let text = newMessageElement.current.value;
+        let text = newMessageElement.current.value
+        if(text) props.sentMessage(text)
+    }
 
-        if(text) {
-            alert(text);
-        }
+    let onChangeNewMessageText = () => {
+        let text = newMessageElement.current.value     
+        props.updateNewMessageText(text)
     }
 
     return (
@@ -28,7 +30,7 @@ const Dialogs = (props) => {
                     {messageItems}
                 </div>
                 <div className={style.newMessage__form}>
-                    <textarea ref={newMessageElement} className={style.newMessage__form__text} placeholder="New message..."></textarea>
+                    <textarea onChange={ onChangeNewMessageText } ref={newMessageElement} className={style.newMessage__form__text} value={props.newMessageText}></textarea>
                     <button onClick={ sentNewMessage } className={style.newMessage__form__button}>Sent</button>
                 </div>
             </div>

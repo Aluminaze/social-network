@@ -1,5 +1,5 @@
-import React from 'react';
-import style from './News.module.css';
+import React from 'react'
+import style from './News.module.css'
 
 const News = (props) => {
     return (
@@ -9,4 +9,4 @@ const News = (props) => {
     )
 }
 
-export default News;
+export default News
