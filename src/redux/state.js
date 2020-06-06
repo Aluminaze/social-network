@@ -1,5 +1,3 @@
-import { rerenderEntireThree } from "../render"
-
 let state = {
     newPostText: "",
     newMessageText: "", 
@@ -24,6 +22,9 @@ let state = {
     ]
 }
 
+let rerenderEntireThree = () => {
+}
+
 export let sentMessage = (textMessage) => {
     let newMessage = {
         id: 1,
@@ -35,8 +36,8 @@ export let sentMessage = (textMessage) => {
 }
 
 export let updateNewMessageText = (textMessage) => {
-    state.newMessageText = textMessage;
-    rerenderEntireThree(state);
+    state.newMessageText = textMessage
+    rerenderEntireThree(state)
 }
 
 export let addPost = (newMessage) => {
@@ -53,6 +54,10 @@ export let addPost = (newMessage) => {
 export let updateNewPostText = (newText) => {
     state.newPostText = newText
     rerenderEntireThree(state)
+}
+
+export let subcribe = (observer) => {
+    rerenderEntireThree = observer
 }
 
 export default state
