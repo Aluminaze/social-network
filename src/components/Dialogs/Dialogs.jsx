@@ -12,12 +12,12 @@ const Dialogs = (props) => {
 
     let sentNewMessage = () => {
         let text = newMessageElement.current.value
-        if(text) props.sentMessage(text)
+        if(text) props.dispatch({type: 'SENT-MESSAGE', textMessage: text})
     }
 
     let onChangeNewMessageText = () => {
         let text = newMessageElement.current.value     
-        props.updateNewMessageText(text)
+        props.dispatch({type: 'UPDATE-NEW-MESSAGE-TEXT', textMessage: text})
     }
 
     return (
