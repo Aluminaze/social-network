@@ -2,16 +2,11 @@ import React from 'react'
 import style from './Posts.module.css'
 import Post from './Post/Post'
 
-
-
 const Posts = (props) => {
   let newPostElement = React.createRef()
-  
+
   let pushPost = () => {
-    let text = newPostElement.current.value;
-    if(text) {
-      props.addPost(text)
-    }
+    props.addPost()
   }
 
   let onChange = () => {

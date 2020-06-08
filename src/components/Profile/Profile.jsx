@@ -1,7 +1,6 @@
 import React from 'react'
 import style from './Profile.module.css'
 import Posts from './Posts/Posts'
-import { addPost } from '../../redux/state'
 
 const Profile = (props) => {
   return (
@@ -26,7 +25,7 @@ const Profile = (props) => {
 
       <Posts
         postsData={props.postsData}
-        addPost={addPost}
+        addPost={props.addPost}
         newPostText={props.newPostText}
         updateNewPostText={props.updateNewPostText}
       />

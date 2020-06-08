@@ -20,18 +20,18 @@ const App = (props) => {
             <Switch>
               <Route path="/profile"
                 render={() => <Profile
-                  postsData={props.receivedData.posts}
+                  postsData={props.state.posts}
                   addPost={props.addPost}
-                  newPostText={props.receivedData.newPostText}
+                  newPostText={props.state.newPostText}
                   updateNewPostText={props.updateNewPostText}
                 />}
               />
 
               <Route path="/dialogs"
                 render={() => <Dialogs
-                  dialogsData={props.receivedData.dialogs}
-                  messagesData={props.receivedData.messages}
-                  newMessageText={props.receivedData.newMessageText}
+                  dialogsData={props.state.dialogs}
+                  messagesData={props.state.messages}
+                  newMessageText={props.state.newMessageText}
                   sentMessage={props.sentMessage}
                   updateNewMessageText={props.updateNewMessageText}
                 />}
