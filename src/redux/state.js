@@ -1,6 +1,6 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const SENT_MESSAGE = 'SENT-MESSAGE'
+const SEND_MESSAGE = 'SEND-MESSAGE'
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
 let store = {
@@ -53,10 +53,10 @@ let store = {
         } else if(action.type === UPDATE_NEW_POST_TEXT) {
             this._state.newPostText = action.newText
             this._rerenderEntireThree(this._state)
-        } else if(action.type === SENT_MESSAGE) {
+        } else if(action.type === SEND_MESSAGE) {
             let newMessage = {
                 id: 1,
-                message: action.textMessage
+                message: this._state.newMessageText
             }
             this._state.messages.push(newMessage)
             this._state.newMessageText = ''
@@ -68,10 +68,10 @@ let store = {
     }
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST})
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
-export const sentMessageActionCreator = (text) => ({type: SENT_MESSAGE, textMessage: text})
-export const updateNewMessageTextActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, textMessage: text});
+export const addPostCreator = () => ({type: ADD_POST})
+export const updateNewPostTextCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const sendMessageCreator = () => ({type: SEND_MESSAGE})
+export const updateNewMessageTextCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, textMessage: text});
 
 window.store = store;
 export default store
