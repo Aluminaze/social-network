@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const SENT_MESSAGE = 'SENT-MESSAGE'
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+
 let store = {
     _state: {
         newPostText: "",
@@ -30,13 +35,13 @@ let store = {
     subscribe(observer) {
         this._rerenderEntireThree = observer
     },
-    
+
     getState() {
         return this._state;
     },
 
     dispatch(action) {
-        if(action.type === 'ADD-POST') {
+        if(action.type === ADD_POST) {
             let newPost = {
                 id: 0,
                 message: this._state.newPostText,
@@ -45,10 +50,10 @@ let store = {
             this._state.posts.push(newPost)
             this._state.newPostText = ''
             this._rerenderEntireThree(this._state)
-        } else if(action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if(action.type === UPDATE_NEW_POST_TEXT) {
             this._state.newPostText = action.newText
             this._rerenderEntireThree(this._state)
-        } else if(action.type === 'SENT-MESSAGE') {
+        } else if(action.type === SENT_MESSAGE) {
             let newMessage = {
                 id: 1,
                 message: action.textMessage
@@ -56,12 +61,17 @@ let store = {
             this._state.messages.push(newMessage)
             this._state.newMessageText = ''
             this._rerenderEntireThree(this._state)
-        } else if(action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+        } else if(action.type === UPDATE_NEW_MESSAGE_TEXT) {
             this._state.newMessageText = action.textMessage
             this._rerenderEntireThree(this._state)
         }
     }
 }
+
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const sentMessageActionCreator = (text) => ({type: SENT_MESSAGE, textMessage: text})
+export const updateNewMessageTextActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, textMessage: text});
 
 window.store = store;
 export default store
