@@ -5,7 +5,6 @@ import Message from './Message/Message'
 import {sendMessageCreator, updateNewMessageTextCreator} from '../../redux/dialogsReducer'
 
 const Dialogs = (props) => {
-
     let dialogsItems = props.dialogsData.map(item => <DialogItem name={item.name} id={item.id} />)
     let messageItems = props.messagesData.map(msg => <Message message={msg.message} />)
 
@@ -39,4 +38,4 @@ const Dialogs = (props) => {
     )
 }
 
-export default Dialogs;
+export default Dialogs
