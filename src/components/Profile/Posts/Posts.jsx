@@ -1,34 +1,40 @@
 import React from 'react'
 import style from './Posts.module.css'
 import Post from './Post/Post'
-import {addPostCreator, updateNewPostTextCreator} from '../../../redux/profileReducer'
-
 
 const Posts = (props) => {
   let newPostElement = React.createRef()
 
-  let pushPost = () => {
+  let onAddPost = () => {
     let text = newPostElement.current.value
-    if(text)  props.dispatch(addPostCreator())
+    if (text) props.onAddPost(text)
   }
 
-  let onChange = () => {
+  let onPostChange = () => {
     let text = newPostElement.current.value
-    props.dispatch(updateNewPostTextCreator(text))
+    props.onPostChange(text)
   }
 
-  let postsItems = props.postsData.map(post => <Post profile="I'm" message={post.message} likes={post.likes} />)
-  
+  let postsItems = props.postsData.posts.map(post => <Post profile="I'm" message={post.message} likes={post.likes} />)
+
   return (
     <div className={style.profile__posts}>
       <div className={style.posts__header}>My posts</div>
       <div className={style.posts__form}>
-        <textarea onChange = {onChange} ref={newPostElement} className={style.posts__form__input} value={props.newPostText}/>
-        <button onClick = { pushPost } className={style.posts__form__submit}>Add post</button>
+        <textarea
+          onChange={onPostChange}
+          ref={newPostElement}
+          className={style.posts__form__input}
+          value={props.postsData.newPostText}
+        />
+        <button
+          onClick={onAddPost}
+          className={style.posts__form__submit}
+        >Add post</button>
       </div>
-        {postsItems}
+      {postsItems}
     </div>
   )
 }
 
-export default Posts;
+export default Posts

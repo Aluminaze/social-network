@@ -9,6 +9,7 @@ let rerenderEntireThree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <App
+        store={store}
         state={store.getState()}
         dispatch={store.dispatch.bind(store)}
       />

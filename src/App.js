@@ -20,6 +20,7 @@ const App = (props) => {
             <Switch>
               <Route path="/profile"
                 render={() => <Profile
+                  store={props.store}
                   postsData={props.state.profilePage.posts}
                   newPostText={props.state.profilePage.newPostText}
                   dispatch={props.dispatch}
