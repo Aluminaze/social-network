@@ -2,7 +2,6 @@ import React from 'react'
 import style from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem'
 import Message from './Message/Message'
-import {sendMessageCreator, updateNewMessageTextCreator} from '../../redux/dialogsReducer'
 
 const Dialogs = (props) => {
     let dialogsItems = props.dialogsData.map(item => <DialogItem name={item.name} id={item.id} />)
@@ -10,14 +9,14 @@ const Dialogs = (props) => {
 
     let newMessageElement = React.createRef()
 
-    let sentNewMessage = () => {
+    let onSendNewMessage = () => {
         let text = newMessageElement.current.value
-        if(text) props.dispatch(sendMessageCreator())
+        if(text) props.onSendNewMessage(text)
     }
 
     let onChangeNewMessageText = () => {
         let text = newMessageElement.current.value     
-        props.dispatch(updateNewMessageTextCreator(text))
+        props.onChangeNewMessageText(text)
     }
 
     return (
@@ -31,7 +30,7 @@ const Dialogs = (props) => {
                 </div>
                 <div className={style.newMessage__form}>
                     <textarea onChange={ onChangeNewMessageText } ref={newMessageElement} className={style.newMessage__form__text} value={props.newMessageText}></textarea>
-                    <button onClick={ sentNewMessage } className={style.newMessage__form__button}>Sent</button>
+                    <button onClick={ onSendNewMessage } className={style.newMessage__form__button}>Send</button>
                 </div>
             </div>
         </section>

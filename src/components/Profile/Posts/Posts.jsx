@@ -15,7 +15,7 @@ const Posts = (props) => {
     props.onPostChange(text)
   }
 
-  let postsItems = props.postsData.posts.map(post => <Post profile="I'm" message={post.message} likes={post.likes} />)
+  let postsItems = props.postsData.map(post => <Post profile="I'm" message={post.message} likes={post.likes} />)
 
   return (
     <div className={style.profile__posts}>
@@ -25,7 +25,7 @@ const Posts = (props) => {
           onChange={onPostChange}
           ref={newPostElement}
           className={style.posts__form__input}
-          value={props.postsData.newPostText}
+          value={props.newPostText}
         />
         <button
           onClick={onAddPost}
