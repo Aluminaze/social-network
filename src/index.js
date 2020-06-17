@@ -4,27 +4,24 @@ import './index.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
+import Store from './storeContext'
 
-let rerenderEntireThree = (state) => {
+let rerenderEntireThree = () => {
   ReactDOM.render(
     <React.StrictMode>
-      <App
-        store={store}
-        state={store.getState()}
-        dispatch={store.dispatch.bind(store)}
-      />
+      <Store.Provider value={store}>
+        <App />
+      </Store.Provider>
     </React.StrictMode>,
     document.getElementById('root')
   )
 }
 
-rerenderEntireThree(store.getState())
+rerenderEntireThree()
 
 store.subscribe(() => {
-  let state = store.getState();
-  rerenderEntireThree(state);
+  rerenderEntireThree();
 })
-
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -16,16 +16,14 @@ const Profile = (props) => {
 
         <div className={style.profile__data}>
           <div className={style.profile__name}>Rick Sanchez</div>
-          <div className={style.profile__dateOfBirth}>Date of birth: <span>1 Jan. 2000 year.</span></div>
+          <div className={style.profile__dateOfBirth}>Date of birth: <span>at an early date</span></div>
           <div className={style.profile__city}>City: <span>Minsk</span></div>
           <div className={style.profile__education}>Education: <span>BSU'11</span></div>
-          <div className={style.profile__webSite}>Web site: <a href="#">www.it-kamasutra.com</a></div>
+          <div className={style.profile__webSite}>Web site: <a href="#">www.it.com</a></div>
         </div>
       </div>
 
-      <PostsContainer
-        store={props.store}
-      />
+      <PostsContainer />
     </div>
   )
 }
