@@ -4,14 +4,14 @@ import './index.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import Store from './storeContext'
+import Store, { Provider } from './storeContext'
 
 let rerenderEntireThree = () => {
   ReactDOM.render(
     <React.StrictMode>
-      <Store.Provider value={store}>
+      <Provider store={store}>
         <App />
-      </Store.Provider>
+      </Provider>
     </React.StrictMode>,
     document.getElementById('root')
   )
