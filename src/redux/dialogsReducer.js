@@ -27,10 +27,14 @@ const dialogsReducer = (state = initialState, action) => {
             id: 1,
             message: state.newMessageText
         }
-        state.messages.push(newMessage)
-        state.newMessageText = ''
+        let stateCopy = JSON.parse(JSON.stringify(state))
+        stateCopy.messages.push(newMessage)
+        stateCopy.newMessageText = ''
+        return stateCopy
     } else if(action.type === UPDATE_NEW_MESSAGE_TEXT) {
-        state.newMessageText = action.textMessage
+        let stateCopy = JSON.parse(JSON.stringify(state))
+        stateCopy.newMessageText = action.textMessage
+        return stateCopy
     }
 
     return state
