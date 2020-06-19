@@ -15,7 +15,7 @@ const Posts = (props) => {
     props.onPostChange(text)
   }
 
-  let postsItems = props.postsData.map(post => <Post profile="I'm" message={post.message} likes={post.likes} />)
+  let postsItems = props.postsData.map(post => <Post profile="I'm" message={post.message} key={post.id} likes={post.likes} />)
 
   return (
     <div className={style.profile__posts}>

@@ -7,30 +7,33 @@ export const updateNewPostTextCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT,
 let initialState = {
   posts: [
     { id: 0, message: "I'm create this application with React technology!", likesCount: 23 },
-    { id: 0, message: "It's my second post on my page :)", likesCount: 12 },
-    { id: 0, message: "It's my first post on my page. WoW!!!", likesCount: 5 },
-    { id: 0, message: "Hi!", likesCount: 1 }
+    { id: 1, message: "It's my second post on my page :)", likesCount: 12 },
+    { id: 2, message: "It's my first post on my page. WoW!!!", likesCount: 5 },
+    { id: 3, message: "Hi!", likesCount: 1 }
   ],
-  newPostText: "HELLO"
+  newPostText: "New post text"
 }
 
 const profileReducer = (state = initialState, action) => {
-  let stateCopy = JSON.parse(JSON.stringify(state))
-
   switch (action.type) {
     case ADD_POST: {
       let newPost = {
-        id: 0,
+        id: 4,
         message: state.newPostText,
         likesCount: 0
       }
-      stateCopy.posts.push(newPost)
-      stateCopy.newPostText = ''
-      return stateCopy
+
+      return {
+        ...state,
+        posts: [...state.posts, newPost],
+        newPostText: ''
+      }
     }
     case UPDATE_NEW_POST_TEXT: {
-      stateCopy.newPostText = action.newText
-      return stateCopy
+      return {
+        ...state,
+        newPostText: action.newText
+      }
     }
     default:
       return state

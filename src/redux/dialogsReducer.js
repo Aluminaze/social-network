@@ -7,7 +7,7 @@ export const updateNewMessageTextCreator = (text) => ({ type: UPDATE_NEW_MESSAGE
 let initialState = {
   messages: [
     { id: 1, message: "Hi!" },
-    { id: 1, message: "Whatsaaaaaaap?" }
+    { id: 2, message: "Whatsaaaaaaap?" }
   ],
   dialogs: [
     { id: 1, name: "Alexa" },
@@ -22,22 +22,24 @@ let initialState = {
 }
 
 const dialogsReducer = (state = initialState, action) => {
-  let stateCopy = JSON.parse(JSON.stringify(state))
-
   switch (action.type) {
     case SEND_MESSAGE: {
       let newMessage = {
-        id: 1,
+        id: 3,
         message: state.newMessageText
       }
 
-      stateCopy.messages.push(newMessage)
-      stateCopy.newMessageText = ''
-      return stateCopy
+      return {
+        ...state,
+        messages: [...state.messages, newMessage],
+        newMessageText: ''
+      }
     }
     case UPDATE_NEW_MESSAGE_TEXT: {
-      stateCopy.newMessageText = action.textMessage
-      return stateCopy
+      return {
+        ...state,
+        newMessageText: action.textMessage
+      }
     }
     default:
       return state
