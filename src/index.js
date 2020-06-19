@@ -4,7 +4,7 @@ import './index.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import Store, { Provider } from './storeContext'
+import { Provider } from 'react-redux'
 
 let rerenderEntireThree = () => {
   ReactDOM.render(
@@ -19,9 +19,7 @@ let rerenderEntireThree = () => {
 
 rerenderEntireThree()
 
-store.subscribe(() => {
-  rerenderEntireThree();
-})
+store.subscribe(() => { rerenderEntireThree() })
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
