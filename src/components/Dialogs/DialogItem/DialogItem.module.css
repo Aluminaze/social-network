@@ -1,12 +1,11 @@
-
 .dialog__item {
-	font-size  : 1.2rem;
-	font-weight: bold;
-	padding    : 1rem;
+  font-size  : 1.2rem;
+  font-weight: bold;
+  padding    : 1rem;
 }
 
 .dialog__active {
-	background-color: #666699;
-	border-radius   : 10px;
-	color           : white;
+  background-color: #666699;
+  border-radius   : 10px;
+  color           : white;
 }

@@ -1,17 +1,17 @@
 .header {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 5;
-    display                : flex;
-    width: 100%;
-    align-items            : center;
-    height                 : 60px;
-    background-color       : #666699;
+  position        : fixed;
+  left            : 0;
+  top             : 0;
+  z-index         : 5;
+  display         : flex;
+  width           : 100%;
+  align-items     : center;
+  height          : 60px;
+  background-color: #666699;
 }
 
 .logo {
-    width      : 45px;
-    height     : 35px;
-    margin-left: 10px;
+  width      : 45px;
+  height     : 35px;
+  margin-left: 10px;
 }

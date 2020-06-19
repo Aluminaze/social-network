@@ -1,16 +1,16 @@
 .nav {
-    -ms-flex-preferred-size: 20%;
-    flex-basis             : 20%;
-    padding                : 1.3rem;
-    background-color       : #666699;
-    border-radius          : 10px;
+  -ms-flex-preferred-size: 20%;
+  flex-basis             : 20%;
+  padding                : 1.3rem;
+  background-color       : #666699;
+  border-radius          : 10px;
 }
 
 .item {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .link {
-    font-size: 1.5rem;
-    color    : white;
+  font-size: 1.5rem;
+  color    : white;
 }

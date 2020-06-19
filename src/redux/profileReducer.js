@@ -5,36 +5,36 @@ export const addPostCreator = () => ({ type: ADD_POST })
 export const updateNewPostTextCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 
 let initialState = {
-    posts: [
-        { id: 0, message: "I'm create this application with React technology!", likesCount: 23 },
-        { id: 0, message: "It's my second post on my page :)", likesCount: 12 },
-        { id: 0, message: "It's my first post on my page. WoW!!!", likesCount: 5 },
-        { id: 0, message: "Hi!", likesCount: 1 }
-    ],
-    newPostText: "HELLO"
+  posts: [
+    { id: 0, message: "I'm create this application with React technology!", likesCount: 23 },
+    { id: 0, message: "It's my second post on my page :)", likesCount: 12 },
+    { id: 0, message: "It's my first post on my page. WoW!!!", likesCount: 5 },
+    { id: 0, message: "Hi!", likesCount: 1 }
+  ],
+  newPostText: "HELLO"
 }
 
 const profileReducer = (state = initialState, action) => {
-    if (action.type === ADD_POST) {
-        let newPost = {
-            id: 0,
-            message: state.newPostText,
-            likesCount: 0
-        }
-        let stateCopy = JSON.parse(JSON.stringify(state))
+  let stateCopy = JSON.parse(JSON.stringify(state))
 
-        stateCopy.posts.push(newPost)
-        stateCopy.newPostText = ''
-        return stateCopy
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-        let stateCopy = JSON.parse(JSON.stringify(state))
-
-        stateCopy.newPostText = action.newText
-
-        return stateCopy
+  switch (action.type) {
+    case ADD_POST: {
+      let newPost = {
+        id: 0,
+        message: state.newPostText,
+        likesCount: 0
+      }
+      stateCopy.posts.push(newPost)
+      stateCopy.newPostText = ''
+      return stateCopy
     }
-
-    return state
+    case UPDATE_NEW_POST_TEXT: {
+      stateCopy.newPostText = action.newText
+      return stateCopy
+    }
+    default:
+      return state
+  }
 }
 
 export default profileReducer
