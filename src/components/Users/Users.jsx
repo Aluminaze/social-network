@@ -1,39 +1,22 @@
 import React from 'react'
+import { } from '../../redux/usersReducer'
 import style from './Users.module.css'
+import User from './User/User'
 
-const Users = () => {
+const Users = (props) => {
+  let usersList = props.users.map(user => (
+    <User
+      isFollow={user.followed}
+      fullName={user.fullName}
+      status={user.status}
+      city={user.location.city}
+      country={user.location.country}
+    />
+  ))
+  
   return (
     <div>
-      <div className={style.user__container}>
-        <div className={style.user__data__leftSide}>
-          <div className={style.user__photo}>Photo</div>
-          <button className={style.user__followButton}>Unfollow</button>
-        </div>
-        <div className={style.user__data__rightSide}>
-          <div className={style.user__info}>
-            <div className={style.user__name}>Dmitry K.</div>
-            <div className={style.user__location}>Belarus, Minsk</div>
-          </div>
-          <div className={style.user__status}>
-            I'm glad to see you
-          </div>
-        </div>
-      </div>
-      <div className={style.user__container}>
-        <div className={style.user__data__leftSide}>
-          <div className={style.user__photo}>Photo</div>
-          <button className={style.user__followButton}>Unfollow</button>
-        </div>
-        <div className={style.user__data__rightSide}>
-          <div className={style.user__info}>
-            <div className={style.user__name}>Dmitry K.</div>
-            <div className={style.user__location}>Belarus, Minsk</div>
-          </div>
-          <div className={style.user__status}>
-            I'm glad to see you
-          </div>
-        </div>
-      </div>
+      {usersList}
     </div>
   )
 }

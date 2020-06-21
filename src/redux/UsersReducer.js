@@ -1,5 +1,3 @@
-import { act } from "react-dom/test-utils"
-
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
@@ -16,27 +14,27 @@ let initialState = {
   ]
 }
 
-const UsersReducer = (state = initialState, action) {
-  switch (action) {
+const usersReducer = (state = initialState, action) => {
+  switch (action.type) {
     case FOLLOW: {
       let stateCopy = {
         ...state,
-        users: state.users.map( u => {
-          if(action.userId == u.id) {
-             return {...u, followed: true}    
+        users: state.users.map(u => {
+          if (action.userId === u.id) {
+            return { ...u, followed: true }
           }
-          return {...u}
+          return { ...u }
         })
       }
     }
     case UNFOLLOW: {
       let stateCopy = {
         ...state,
-        users: state.users.map( u => {
-          if(action.userId == u.id) {
-             return {...u, followed: false}    
+        users: state.users.map(u => {
+          if (action.userId == u.id) {
+            return { ...u, followed: false }
           }
-          return {...u}
+          return { ...u }
         })
       }
     }
@@ -48,7 +46,7 @@ const UsersReducer = (state = initialState, action) {
     }
     default:
       return state
-  }  
+  }
 }
 
-export default UsersReducer
+export default usersReducer
