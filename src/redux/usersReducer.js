@@ -2,36 +2,33 @@ const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 
-export const follow = (userId) => ({ type: FOLLOW, userId: userId })
-export const unfollow = (userId) => ({ type: UNFOLLOW, userId: userId })
-export const setUsers = (users) => ({ type: SET_USERS, users: users })
+export const followCreater = (userId) => ({ type: FOLLOW, userId: userId })
+export const unfollowCreater = (userId) => ({ type: UNFOLLOW, userId: userId })
+export const setUsersCreater = (users) => ({ type: SET_USERS, users: users })
 
 let initialState = {
-  users: [
-    { id: 1, followed: false, fullName: 'Michael', status: 'Im a good friend', location: { city: 'Kiev', country: 'Ukraine' } },
-    { id: 2, followed: true, fullName: 'John', status: 'Just chill', location: { city: 'London', country: 'Great Britain' } },
-    { id: 3, followed: false, fullName: 'Kira', status: 'Make a good mood', location: { city: 'Miami', country: 'USA' } }
-  ]
+  users: []
 }
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case FOLLOW: {
-      let stateCopy = {
+      return {
         ...state,
         users: state.users.map(u => {
           if (action.userId === u.id) {
             return { ...u, followed: true }
+          } else {
+            return { ...u }
           }
-          return { ...u }
         })
       }
     }
     case UNFOLLOW: {
-      let stateCopy = {
+      return {
         ...state,
         users: state.users.map(u => {
-          if (action.userId == u.id) {
+          if (action.userId === u.id) {
             return { ...u, followed: false }
           }
           return { ...u }

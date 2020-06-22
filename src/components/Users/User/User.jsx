@@ -6,9 +6,14 @@ const User = (props) => {
     <div className={style.user__container}>
       <div className={style.user__data__leftSide}>
         <div className={style.user__photo}>Photo</div>
-        <button className={style.user__followButton}>
-          { `${(props.isFollow) ? 'Unfollow' : 'Follow'}` }
-        </button>
+        {(props.isFollow)
+          ? <button className={style.user__followButton} onClick={() => {
+            props.unfollow(props.id)
+          }}>Unfollow</button>
+          : <button className={style.user__followButton} onClick={() => {
+            props.follow(props.id)
+          }}>Follow</button>
+        }
       </div>
       <div className={style.user__data__rightSide}>
         <div className={style.user__info}>
