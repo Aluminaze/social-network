@@ -1,22 +1,22 @@
 import React from 'react'
 import style from './Users.module.css'
 import User from './User/User'
+import * as axios from 'axios'
 
 const Users = (props) => {
-  if(props.users.length === 0){
-    props.setUsers([
-    { id: 1, followed: false, fullName: 'Michael', status: 'Im a good friend', location: { city: 'Kiev', country: 'Ukraine' } },
-    { id: 2, followed: true, fullName: 'John', status: 'Just chill', location: { city: 'London', country: 'Great Britain' } },
-    { id: 3, followed: false, fullName: 'Kira', status: 'Make a good mood', location: { city: 'Miami', country: 'USA' } }
-  ])}
+  if (props.users.length === 0) {
+    axios.get("https://social-network.samuraijs.com/api/1.0/users").then(responce => {
+      props.setUsers(responce.data.items)
+    })
+  }
 
   let usersList = props.users.map(user => (
     <User
-      isFollow={user.followed}
-      fullName={user.fullName}
+      followed={user.followed}
+      name={user.name}
       status={user.status}
-      city={user.location.city}
-      country={user.location.country}
+      city={user.status}
+      country={user.status}
       follow={props.follow}
       unfollow={props.unfollow}
       key={props.id}
