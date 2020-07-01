@@ -60,3 +60,7 @@
   .user__status {
 	font-size: 1.3rem;
   }
+
+  .current__page {
+	  font-weight: bold;
+  }
