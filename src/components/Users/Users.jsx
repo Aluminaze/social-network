@@ -4,20 +4,15 @@ import User from './User/User'
 import * as axios from 'axios'
 
 class Users extends React.Component {
-  constructor(props) {
-    super(props)
-
-    console.log(`constructor`)
-
+  componentDidMount() {
     axios.get("https://social-network.samuraijs.com/api/1.0/users").then(responce => {
       this.props.setUsers(responce.data.items)
     })
   }
 
   render() {
-
     console.log(`render`)
-    
+
     let usersList = this.props.users.map(user => (
       <User
         followed={user.followed}
