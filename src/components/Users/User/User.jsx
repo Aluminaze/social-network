@@ -5,7 +5,9 @@ const User = (props) => {
   return (
     <div className={style.user__container}>
       <div className={style.user__data__leftSide}>
-        <div className={style.user__photo}>Photo</div>
+        {props.photo != null 
+        ? <img className={style.user__photo} src={props.photo} alt="profile_photo"/>  
+        : <div className={style.user__photo}>Photo</div>}
         {(props.followed)
           ? <button className={style.user__followButton} onClick={() => {
             props.unfollow(props.id)

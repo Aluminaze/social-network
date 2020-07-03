@@ -15,6 +15,7 @@ const Users = (props) => {
       unfollow={props.unfollow}
       key={props.id}
       id={user.id}
+      photo={user.photos.small}
     />
   ))
 
