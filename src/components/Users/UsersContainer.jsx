@@ -1,7 +1,7 @@
 import React from 'react'
 import Users from './Users'
 import { connect } from 'react-redux'
-import { followCreater, unfollowCreater, setUsersCreater, setCurrentPageCreater, setUsersTotalCountCreater, setFetchingStatus } from '../../redux/usersReducer'
+import { follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount, setFetchingStatus } from '../../redux/usersReducer'
 import * as axios from 'axios'
 
 class UsersContainer extends React.Component {
@@ -20,7 +20,7 @@ class UsersContainer extends React.Component {
     this.props.setFetchingStatus(true)
     this.props.setCurrentPage(currentPage)
     this.props.setUsers([])
-    
+
     axios
       .get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageCountSize}&page=${currentPage}`)
       .then(responce => {
@@ -57,15 +57,13 @@ let mapStateToProps = (state) => {
   }
 }
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    follow: (userId) => dispatch(followCreater(userId)),
-    unfollow: (userId) => dispatch(unfollowCreater(userId)),
-    setUsers: (users) => dispatch(setUsersCreater(users)),
-    setCurrentPage: (currentPage) => dispatch(setCurrentPageCreater(currentPage)),
-    setUsersTotalCount: (usersTotalCount) => dispatch(setUsersTotalCountCreater(usersTotalCount)),
-    setFetchingStatus: (isFetching) => dispatch(setFetchingStatus(isFetching))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
+export default
+  connect(
+    mapStateToProps, {
+      follow,
+      unfollow,
+      setUsers,
+      setCurrentPage,
+      setUsersTotalCount,
+      setFetchingStatus
+    })(UsersContainer)
