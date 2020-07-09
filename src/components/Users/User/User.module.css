@@ -24,8 +24,17 @@
   color           : white;
 }
 
-.user__followButton {
+.user__followButton__enable {
   background-color: #666699;
+  color           : white;
+  font-size       : 1.1rem;
+  border-radius   : 10px;
+  padding         : 0.3rem 1rem;
+  margin-top      : 1rem;
+}
+
+.user__followButton__disable {
+  background-color: gray;
   color           : white;
   font-size       : 1.1rem;
   border-radius   : 10px;

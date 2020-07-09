@@ -16,6 +16,8 @@ const Users = (props) => {
       key={props.id}
       id={user.id}
       photo={user.photos.small}
+      setFollowingInProgress={props.setFollowingInProgress}
+      followingInProgress={props.followingInProgress}
     />
   ))
 
@@ -32,7 +34,10 @@ const Users = (props) => {
     <div className={style.container}>
       <div className={style.pages}>
         {pages.map(page => {
-          return <span onClick={() => props.onPageChange(page)}
+          return <span onClick={() => {
+            console.log(`cliked page: ${page}`)
+            props.onPageChange(page)
+          }}
             className={page === props.currentPage ? style.selected__page : style.unselected__page}>{page}</span>
         })}
       </div>

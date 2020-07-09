@@ -8,6 +8,7 @@ import {
   setCurrentPage,
   setUsersTotalCount,
   setFetchingStatus,
+  setFollowingInProgress,
 } from "../../redux/usersReducer";
 import { usersAPI } from "../api/api";
 
@@ -30,7 +31,7 @@ class UsersContainer extends React.Component {
     this.props.setUsers([]);
 
     usersAPI
-      .getUsers(this.props.pageCountSize, this.props.currentPage).then((data) => {
+      .getUsers(this.props.pageCountSize, currentPage).then((data) => {
       this.props.setUsers(data.items);
       this.props.setFetchingStatus(false);
     });
@@ -49,6 +50,8 @@ class UsersContainer extends React.Component {
         currentPage={this.props.currentPage}
         onPageChange={this.onPageChange}
         isFetching={this.props.isFetching}
+        setFollowingInProgress={this.props.setFollowingInProgress}
+        followingInProgress={this.props.followingInProgress}
       />
     );
   }
@@ -61,6 +64,7 @@ let mapStateToProps = (state) => {
     usersTotalCount: state.usersPage.usersTotalCount,
     pageCountSize: state.usersPage.pageCountSize,
     isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress
   };
 };
 
@@ -71,4 +75,5 @@ export default connect(mapStateToProps, {
   setCurrentPage,
   setUsersTotalCount,
   setFetchingStatus,
+  setFollowingInProgress
 })(UsersContainer);

@@ -21,10 +21,19 @@ const User = (props) => {
 
         {props.followed ? (
           <button
-            className={style.user__followButton}
+            disabled={props.followingInProgress.some(
+              (userId) => userId === props.id
+            )}
+            className={
+              props.followingInProgress.some((userId) => userId === props.id)
+                ? style.user__followButton__disable
+                : style.user__followButton__enable
+            }
             onClick={() => {
+              props.setFollowingInProgress(true, props.id);
               userAPI.unfollow(props.id).then((data) => {
                 if (data.resultCode === 0) props.unfollow(props.id);
+                props.setFollowingInProgress(false, props.id);
               });
             }}
           >
@@ -32,10 +41,19 @@ const User = (props) => {
           </button>
         ) : (
           <button
-            className={style.user__followButton}
+            disabled={props.followingInProgress.some(
+              (userId) => userId === props.id
+            )}
+            className={
+              props.followingInProgress.some((userId) => userId === props.id)
+                ? style.user__followButton__disable
+                : style.user__followButton__enable
+            }
             onClick={() => {
+              props.setFollowingInProgress(true, props.id);
               userAPI.follow(props.id).then((data) => {
                 if (data.resultCode === 0) props.follow(props.id);
+                props.setFollowingInProgress(false, props.id);
               });
             }}
           >
