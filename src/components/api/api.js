@@ -13,6 +13,18 @@ export const usersAPI = {
     return instance
       .get(`users?count=${pageCountSize}&page=${currentPage}`)
       .then((responce) => responce.data);
-  }
-}
+  },
+};
 
+export const userAPI = {
+  unfollow(userId) {
+    return instance
+      .delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`)
+      .then((responce) => responce.data);
+  },
+  follow(userId) {
+    return instance
+      .post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`)
+      .then((responce) => responce.data);
+  },
+};
