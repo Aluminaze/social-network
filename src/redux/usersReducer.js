@@ -1,3 +1,5 @@
+import { usersAPI } from "../components/api/api"
+
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
@@ -13,6 +15,21 @@ export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, curren
 export const setUsersTotalCount = (usersTotalCount) => ({ type: SET_USERS_TOTAL_COUNT, usersTotalCount })
 export const setFetchingStatus = (isFetching) => ({type: SET_FETCHING_STATUS, isFetching})
 export const setFollowingInProgress = (followingInProgress, userId) => ({type: SET_FOLLOWING_IN_PROGRESS, followingInProgress, userId})
+
+export const getUsers = (pageCountSize, currentPage) => {
+  return dispatch => {
+    dispatch(setFetchingStatus(true));
+    dispatch(setUsers([]));
+    
+    usersAPI
+      .getUsers(pageCountSize, currentPage)
+      .then((data) => {
+        dispatch(setUsers(data.items));
+        dispatch(setUsersTotalCount(data.totalCount));
+        dispatch(setFetchingStatus(false));
+      });
+  }
+}
 
 let initialState = {
   users: [],
