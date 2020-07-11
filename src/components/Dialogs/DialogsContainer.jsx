@@ -6,15 +6,16 @@ import { Redirect } from "react-router-dom";
 
 const DialogsContainer = (props) => {
   if (!props.isAuthorized) return <Redirect to={"/login"} />;
-  else return (
-    <Dialogs
-      dialogsData={props.dialogsData}
-      messagesData={props.messagesData}
-      newMessageText={props.newMessageText}
-      sendMessage={props.sendMessage}
-      updateNewMessageText={props.updateNewMessageText}
-    />
-  );
+  else
+    return (
+      <Dialogs
+        dialogsData={props.dialogsData}
+        messagesData={props.messagesData}
+        newMessageText={props.newMessageText}
+        sendMessage={props.sendMessage}
+        updateNewMessageText={props.updateNewMessageText}
+      />
+    );
 };
 
 let mapStateToProps = (state) => {
