@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./User.module.css";
 import { NavLink } from "react-router-dom";
-import { userAPI } from "../../api/api";
 
 const User = (props) => {
   return (
@@ -29,13 +28,7 @@ const User = (props) => {
                 ? style.user__followButton__disable
                 : style.user__followButton__enable
             }
-            onClick={() => {
-              props.setFollowingInProgress(true, props.id);
-              userAPI.unfollow(props.id).then((data) => {
-                if (data.resultCode === 0) props.unfollow(props.id);
-                props.setFollowingInProgress(false, props.id);
-              });
-            }}
+            onClick={() => props.toUnfollow(props.id)}
           >
             Unfollow
           </button>
@@ -49,13 +42,7 @@ const User = (props) => {
                 ? style.user__followButton__disable
                 : style.user__followButton__enable
             }
-            onClick={() => {
-              props.setFollowingInProgress(true, props.id);
-              userAPI.follow(props.id).then((data) => {
-                if (data.resultCode === 0) props.follow(props.id);
-                props.setFollowingInProgress(false, props.id);
-              });
-            }}
+            onClick={() => props.toFollow(props.id)}
           >
             Follow
           </button>
@@ -65,8 +52,7 @@ const User = (props) => {
         <div className={style.user__info}>
           <div className={style.user__name}> {`${props.name}`} </div>
           <div className={style.user__location}>
-            {" "}
-            {`${props.country}`}, {`${props.city}`}{" "}
+            {`${props.country}`}, {`${props.city}`}
           </div>
         </div>
         <div className={style.user__status}> {`${props.status}`} </div>

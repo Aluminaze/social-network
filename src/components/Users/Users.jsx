@@ -11,13 +11,12 @@ const Users = (props) => {
       status={user.status}
       city={user.status}
       country={user.status}
-      follow={props.follow}
-      unfollow={props.unfollow}
       key={props.id}
       id={user.id}
       photo={user.photos.small}
-      setFollowingInProgress={props.setFollowingInProgress}
       followingInProgress={props.followingInProgress}
+      toFollow={props.toFollow}
+      toUnfollow={props.toUnfollow}
     />
   ))
 
