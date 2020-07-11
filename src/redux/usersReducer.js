@@ -1,4 +1,5 @@
-import { usersAPI, userAPI } from "../components/api/api";
+import { usersAPI, userAPI, authAPI } from "../components/api/api";
+import { setAuthUserData } from "./authReducer";
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -49,6 +50,17 @@ export const toFollow = (userId) => {
     userAPI.follow(userId).then((data) => {
       if (data.resultCode === 0) dispatch(follow(userId));
       dispatch(setFollowingInProgress(false, userId));
+    });
+  };
+};
+
+export const authRequest = () => {
+  return (dispatch) => {
+    authAPI.isAuthorized().then((data) => {
+      if (data.resultCode === 0) {
+        let { id, login, email } = data.data;
+        dispatch(setAuthUserData(id, login, email));
+      }
     });
   };
 };
