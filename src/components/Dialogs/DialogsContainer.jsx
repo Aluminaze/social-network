@@ -3,6 +3,18 @@ import { sendMessage, updateNewMessageText } from "../../redux/dialogsReducer";
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
 
+const DialogsContainer = (props) => {
+  return (
+    <Dialogs
+      dialogsData={props.dialogsData}
+      messagesData={props.messagesData}
+      newMessageText={props.newMessageText}
+      sendMessage={props.sendMessage}
+      updateNewMessageText={props.updateNewMessageText}
+    />
+  );
+};
+
 let mapStateToProps = (state) => {
   return {
     dialogsData: state.dialogsPage.dialogs,
@@ -10,10 +22,6 @@ let mapStateToProps = (state) => {
     newMessageText: state.dialogsPage.newMessageText,
   };
 };
-
-const DialogsContainer = connect(mapStateToProps, {
-  sendMessage,
-  updateNewMessageText,
-})(Dialogs);
-
-export default DialogsContainer;
+export default connect(mapStateToProps, { sendMessage, updateNewMessageText })(
+  DialogsContainer
+);
