@@ -2,9 +2,11 @@ import React from "react";
 import { sendMessage, updateNewMessageText } from "../../redux/dialogsReducer";
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 const DialogsContainer = (props) => {
-  return (
+  if (!props.isAuthorized) return <Redirect to={"/login"} />;
+  else return (
     <Dialogs
       dialogsData={props.dialogsData}
       messagesData={props.messagesData}
@@ -20,6 +22,7 @@ let mapStateToProps = (state) => {
     dialogsData: state.dialogsPage.dialogs,
     messagesData: state.dialogsPage.messages,
     newMessageText: state.dialogsPage.newMessageText,
+    isAuthorized: state.auth.isAuthorized,
   };
 };
 export default connect(mapStateToProps, { sendMessage, updateNewMessageText })(
