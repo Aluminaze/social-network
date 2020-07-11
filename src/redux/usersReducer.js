@@ -1,5 +1,11 @@
-import { usersAPI, userAPI, authAPI } from "../components/api/api";
+import {
+  usersAPI,
+  userAPI,
+  authAPI,
+  userProfileAPI,
+} from "../components/api/api";
 import { setAuthUserData } from "./authReducer";
+import { setUserProfile } from "./profileReducer";
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -54,6 +60,17 @@ export const toFollow = (userId) => {
   };
 };
 
+export const toUnfollow = (userId) => {
+  return (dispatch) => {
+    dispatch(setFollowingInProgress(true, userId));
+
+    userAPI.unfollow(userId).then((data) => {
+      if (data.resultCode === 0) dispatch(unfollow(userId));
+      dispatch(setFollowingInProgress(false, userId));
+    });
+  };
+};
+
 export const authRequest = () => {
   return (dispatch) => {
     authAPI.isAuthorized().then((data) => {
@@ -65,13 +82,10 @@ export const authRequest = () => {
   };
 };
 
-export const toUnfollow = (userId) => {
+export const userProfileRequest = (userId) => {
   return (dispatch) => {
-    dispatch(setFollowingInProgress(true, userId));
-
-    userAPI.unfollow(userId).then((data) => {
-      if (data.resultCode === 0) dispatch(unfollow(userId));
-      dispatch(setFollowingInProgress(false, userId));
+    userProfileAPI.getUserProfile(userId).then((data) => {
+      dispatch(setUserProfile(data));
     });
   };
 };
