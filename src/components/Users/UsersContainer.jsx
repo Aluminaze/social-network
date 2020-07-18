@@ -8,6 +8,7 @@ import {
   toUnfollow,
 } from "../../redux/usersReducer";
 import { withAuthRedirect } from "../hoc/AuthRedirect";
+import { compose } from "redux";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -45,15 +46,16 @@ let mapStateToProps = (state) => {
     usersTotalCount: state.usersPage.usersTotalCount,
     pageCountSize: state.usersPage.pageCountSize,
     isFetching: state.usersPage.isFetching,
-    followingInProgress: state.usersPage.followingInProgress
+    followingInProgress: state.usersPage.followingInProgress,
   };
 };
 
-let AuthRedirecComponent = withAuthRedirect(UsersContainer);
-
-export default connect(mapStateToProps, {
-  setCurrentPage,
-  getUsers,
-  toFollow,
-  toUnfollow,
-})(AuthRedirecComponent);
+export default compose(
+  connect(mapStateToProps, {
+    setCurrentPage,
+    getUsers,
+    toFollow,
+    toUnfollow,
+  }),
+  withAuthRedirect
+)(UsersContainer);
