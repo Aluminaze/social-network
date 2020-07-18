@@ -2,6 +2,7 @@ import React from "react";
 import style from "./Profile.module.css";
 import PostsContainer from "./Posts/PostsContainer";
 import Preloader from "../common/Preloader/Preloader";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
   return (
@@ -9,7 +10,7 @@ const Profile = (props) => {
       {!props.profile ? (
         <Preloader isFetching={true} />
       ) : (
-        <img src={props.profile.photos.large} alt="profile_photo" />
+        <ProfileInfo profileStatus="Hello World!" {...props}/>
       )}
       <div className={style.wallpaper__block}>
         <img

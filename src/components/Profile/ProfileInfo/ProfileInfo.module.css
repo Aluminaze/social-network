@@ -1,0 +1,23 @@
+.profileInfo__block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileInfo__photo {
+    width: 150px;
+    height: 150px;
+}
+
+.profileInfo__status {
+    padding: .5rem;
+    font-size: 1.3rem;
+}
+
+.profileInfo__statusInput {
+    padding: .5rem;
+    font-size: 1.3rem;
+    border: 3px solid #666999;
+    border-radius: 10px;
+}
