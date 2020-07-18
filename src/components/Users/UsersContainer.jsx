@@ -7,7 +7,7 @@ import {
   toFollow,
   toUnfollow,
 } from "../../redux/usersReducer";
-import { Redirect } from "react-router-dom";
+import { withAuthRedirect } from "../hoc/AuthRedirect";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -20,23 +20,21 @@ class UsersContainer extends React.Component {
   };
 
   render() {
-    if (!this.props.isAuthorized) return <Redirect to={"/login"} />;
-    else
-      return (
-        <Users
-          users={this.props.users}
-          id={this.props.id}
-          key={this.props.id}
-          usersTotalCount={this.props.usersTotalCount}
-          pageCountSize={this.props.pageCountSize}
-          currentPage={this.props.currentPage}
-          onPageChange={this.onPageChange}
-          isFetching={this.props.isFetching}
-          followingInProgress={this.props.followingInProgress}
-          toFollow={this.props.toFollow}
-          toUnfollow={this.props.toUnfollow}
-        />
-      );
+    return (
+      <Users
+        users={this.props.users}
+        id={this.props.id}
+        key={this.props.id}
+        usersTotalCount={this.props.usersTotalCount}
+        pageCountSize={this.props.pageCountSize}
+        currentPage={this.props.currentPage}
+        onPageChange={this.onPageChange}
+        isFetching={this.props.isFetching}
+        followingInProgress={this.props.followingInProgress}
+        toFollow={this.props.toFollow}
+        toUnfollow={this.props.toUnfollow}
+      />
+    );
   }
 }
 
@@ -47,14 +45,15 @@ let mapStateToProps = (state) => {
     usersTotalCount: state.usersPage.usersTotalCount,
     pageCountSize: state.usersPage.pageCountSize,
     isFetching: state.usersPage.isFetching,
-    followingInProgress: state.usersPage.followingInProgress,
-    isAuthorized: state.auth.isAuthorized,
+    followingInProgress: state.usersPage.followingInProgress
   };
 };
+
+let AuthRedirecComponent = withAuthRedirect(UsersContainer);
 
 export default connect(mapStateToProps, {
   setCurrentPage,
   getUsers,
   toFollow,
   toUnfollow,
-})(UsersContainer);
+})(AuthRedirecComponent);
