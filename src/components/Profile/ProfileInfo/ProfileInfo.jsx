@@ -29,7 +29,7 @@ class ProfileInfo extends React.Component {
         />
         {this.state.editMode ? (
           <input
-            autoFocus='true'
+            autoFocus={true}
             onBlur={this.deactivateEditMode.bind(this)}
             className={style.profileInfo__statusInput}
             type="text"
