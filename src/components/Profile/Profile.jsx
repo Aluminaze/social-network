@@ -10,7 +10,11 @@ const Profile = (props) => {
       {!props.profile ? (
         <Preloader isFetching={true} />
       ) : (
-        <ProfileInfo profileStatus="Hello World!" {...props}/>
+        <ProfileInfo
+          updateProfileStatus={props.updateProfileStatus}
+          statusText={props.statusText}
+          profilePhotoLarge={props.profile.photos.large}
+        />
       )}
       <div className={style.wallpaper__block}>
         <img
@@ -45,7 +49,6 @@ const Profile = (props) => {
           </div>
         </div>
       </div>
-
       <PostsContainer />
     </div>
   );
