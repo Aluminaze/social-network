@@ -2,7 +2,7 @@ import React from "react";
 import style from "./PostForm.module.css";
 import { Field, reduxForm } from "redux-form";
 
-let PostForm = (props) => {
+const PostForm = (props) => {
   return (
     <form className={style.posts__form} onSubmit={props.handleSubmit}>
       <Field
@@ -18,8 +18,6 @@ let PostForm = (props) => {
   );
 };
 
-PostForm = reduxForm({
+export default reduxForm({
   form: "post",
 })(PostForm);
-
-export default PostForm;
