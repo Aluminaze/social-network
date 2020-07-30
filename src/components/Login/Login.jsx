@@ -1,12 +1,27 @@
 import React from "react";
 import style from "./Login.module.css";
 import { Field, reduxForm } from "redux-form";
+import { required, maxLength15, minLength3 } from "../../utils/validators/validators";
+import { InputForm } from "../../components/common/FormsControls/FormsContols"
 
 let LoginForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit} className={style.login__form}>
-      <Field className={style.login__login} name="login" component="input" type="text"/>
-      <Field className={style.login__password} name="password" component="input" type="password"/>
+      {/* <Field className={style.login__login} validate={[required, maxLength15]} name="loginInput" component="input" type="text"/> */}
+      <Field
+        className={style.login__login}
+        validate={[required, maxLength15, minLength3]}
+        name="loginInput"
+        component={InputForm}
+        type="text"
+      />
+
+      <Field
+        className={style.login__password}
+        name="passwordInput"
+        component="input"
+        type="password"
+      />
       <div className={style.login__checkbox}>
         <Field name="rememberMe" component="input" type="checkbox" />
         Remember me
@@ -18,17 +33,17 @@ let LoginForm = (props) => {
 
 LoginForm = reduxForm({
   form: "login",
-})(LoginForm)
+})(LoginForm);
 
 const Login = (props) => {
   // const { handleSubmit } = props;
-  
+
   const onSubmit = (data) => {
-    console.log(data)
-  }
+    console.log(data);
+  };
 
   return (
-    <div> 
+    <div>
       <h1>Login process</h1>
       <LoginForm onSubmit={onSubmit} />
     </div>
