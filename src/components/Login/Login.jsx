@@ -1,8 +1,11 @@
 import React from "react";
 import style from "./Login.module.css";
 import { Field, reduxForm } from "redux-form";
-import { required, maxLength15, minLength3 } from "../../utils/validators/validators";
+import { required, maxLengthCreator, minLengthCreator } from "../../utils/validators/validators";
 import { InputForm } from "../../components/common/FormsControls/FormsContols"
+
+const maxLength16 = maxLengthCreator(16);
+const minLength3 = minLengthCreator(3);
 
 let LoginForm = (props) => {
   return (
@@ -10,7 +13,7 @@ let LoginForm = (props) => {
       {/* <Field className={style.login__login} validate={[required, maxLength15]} name="loginInput" component="input" type="text"/> */}
       <Field
         className={style.login__login}
-        validate={[required, maxLength15, minLength3]}
+        validate={[required, minLength3, maxLength16, minLength3]}
         name="loginInput"
         component={InputForm}
         type="text"
