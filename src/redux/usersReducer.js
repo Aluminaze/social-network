@@ -71,17 +71,6 @@ export const toUnfollow = (userId) => {
   };
 };
 
-export const authRequest = () => {
-  return (dispatch) => {
-    authAPI.isAuthorized().then((data) => {
-      if (data.resultCode === 0) {
-        let { id, login, email } = data.data;
-        dispatch(setAuthUserData(id, login, email));
-      }
-    });
-  };
-};
-
 export const userProfileRequest = (userId) => {
   return (dispatch) => {
     userProfileAPI.getUserProfile(userId).then((data) => {
