@@ -1,10 +1,8 @@
 import {
   usersAPI,
   userAPI,
-  authAPI,
   userProfileAPI,
 } from "../components/api/api";
-import { setAuthUserData } from "./authReducer";
 import { setUserProfile } from "./profileReducer";
 
 const FOLLOW = "FOLLOW";

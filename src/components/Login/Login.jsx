@@ -1,8 +1,12 @@
 import React from "react";
 import style from "./Login.module.css";
 import { Field, reduxForm } from "redux-form";
-import { required, maxLengthCreator, minLengthCreator } from "../../utils/validators/validators";
-import { InputForm } from "../../components/common/FormsControls/FormsContols"
+import {
+  required,
+  maxLengthCreator,
+  minLengthCreator,
+} from "../../utils/validators/validators";
+import { InputForm } from "../../components/common/FormsControls/FormsContols";
 import { connect } from "react-redux";
 import { login } from "../../redux/authReducer";
 import { Redirect } from "react-router-dom";
@@ -15,13 +19,14 @@ let LoginForm = (props) => {
     <form onSubmit={props.handleSubmit} className={style.login__form}>
       <Field
         className={style.login__login}
-        validate={[required, minLength3, maxLength30, minLength3]}
+        validate={[required, minLength3, maxLength30]}
         name="email"
         component={InputForm}
         type="text"
       />
       <Field
         className={style.login__password}
+        validate={[required]}
         name="password"
         component="input"
         type="password"
@@ -30,6 +35,9 @@ let LoginForm = (props) => {
         <Field name="rememberMe" component="input" type="checkbox" />
         Remember me
       </div>
+      { props.error && <div className={style.login__error}>
+        {props.error}
+      </div>}
       <button type="submit">Login</button>
     </form>
   );
@@ -41,12 +49,11 @@ LoginForm = reduxForm({
 
 const Login = (props) => {
   const onSubmit = (data) => {
-    let {email, password, rememberMe} = data
-    debugger
+    let { email, password, rememberMe } = data;
     props.login(email, password, rememberMe);
   };
 
-  if(props.isAuthorized) return <Redirect to={"/profile"}/>
+  if (props.isAuthorized) return <Redirect to={"/profile"} />;
 
   return (
     <div>
@@ -58,8 +65,8 @@ const Login = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isAuthorized: state.auth.isAuthorized
-  }
-}
+    isAuthorized: state.auth.isAuthorized,
+  };
+};
 
-export default connect(mapStateToProps, {login, })(Login);
+export default connect(mapStateToProps, { login })(Login);
