@@ -34,7 +34,7 @@ export const setFollowingInProgress = (followingInProgress, userId) => ({
   userId,
 });
 
-export const getUsers = (pageCountSize, currentPage) => {
+export const getUsersRequest = (pageCountSize, currentPage) => {
   return (dispatch) => {
     dispatch(setFetchingStatus(true));
     dispatch(setUsers([]));
