@@ -1,65 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./ProfileInfo.module.css";
 
-class ProfileInfo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.editedStatusText = React.createRef();    
-  }
+const ProfileInfo = (props) => {
+  let [editMode, setEditMode] = useState(false);
+  let [statusText, setStatusText] = useState(props.statusText);
 
-  state = {
-    editMode: false,
-    statusText: this.props.statusText,
+  const onChangeStatusText = (e) => {
+    setStatusText(e.currentTarget.value);
   };
 
-  onChangeUpdateStatusText() {
-    this.setState({
-      statusText: this.editedStatusText.current.value,
-    });
-  }
+  const activateEditMode = () => {
+    setEditMode(true);
+  };
 
-  activateEditMode() {
-    this.setState({
-      editMode: true,
-    });
-  }
+  const deactivateEditMode = () => {
+    setEditMode(false);
+    props.updateProfileStatus(statusText);
+  };
 
-  deactivateEditMode() {
-    this.setState({
-      editMode: false,
-    });
-    this.props.updateProfileStatus(this.state.statusText);
-  }
-
-  render() {
-    return (
-      <div className={style.profileInfo__block}>
-        <img
-          className={style.profileInfo__photo}
-          src={this.props.profilePhotoLarge}
-          alt="profile_photo"
+  return (
+    <div className={style.profileInfo__block}>
+      <img
+        className={style.profileInfo__photo}
+        src={props.profilePhotoLarge}
+        alt="profile_photo"
+      />
+      {editMode ? (
+        <input
+          onChange={onChangeStatusText}
+          autoFocus={true}
+          onBlur={deactivateEditMode}
+          className={style.profileInfo__statusInput}
+          type="text"
+          value={statusText}
         />
-        {this.state.editMode ? (
-          <input
-            ref={this.editedStatusText}
-            onChange={this.onChangeUpdateStatusText.bind(this)}
-            autoFocus={true}
-            onBlur={this.deactivateEditMode.bind(this)}
-            className={style.profileInfo__statusInput}
-            type="text"
-            value={this.state.statusText}
-          />
-        ) : (
-          <span
-            onClick={this.activateEditMode.bind(this)}
-            className={style.profileInfo__status}
-          >
-            {this.state.statusText || "status text field is empty"}
-          </span>
-        )}
-      </div>
-    );
-  }
-}
+      ) : (
+        <span onClick={activateEditMode} className={style.profileInfo__status}>
+          {statusText || "status text field is empty"}
+        </span>
+      )}
+    </div>
+  );
+};
 
 export default ProfileInfo;
