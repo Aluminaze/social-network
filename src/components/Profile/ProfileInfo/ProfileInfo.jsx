@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import style from "./ProfileInfo.module.css";
+import { useEffect } from "react";
 
 const ProfileInfo = (props) => {
   let [editMode, setEditMode] = useState(false);
@@ -17,6 +18,10 @@ const ProfileInfo = (props) => {
     setEditMode(false);
     props.updateProfileStatus(statusText);
   };
+
+  useEffect(() => {
+    setStatusText(props.statusText)
+  }, [props.statusText])
 
   return (
     <div className={style.profileInfo__block}>
