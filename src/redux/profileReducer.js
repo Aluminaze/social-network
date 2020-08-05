@@ -14,25 +14,14 @@ export const setProfileStatus = (statusText) => ({
   statusText,
 });
 
-export const getProfileStatus = (userId) => {
-  return (dispatch) => {
-    userProfileAPI.getUserStatus(userId).then((responce) => {
-      dispatch(setProfileStatus(responce.data));
-    });
-  };
+export const getProfileStatus = (userId) => async (dispatch) => {
+  const responce = await userProfileAPI.getUserStatus(userId);
+  dispatch(setProfileStatus(responce.data));
 };
 
-export const updateProfileStatus = (statusText) => {
-  return (dispatch) => {
-    console.log("updateProfileStatus STARTED");
-    console.log("statusText: ", statusText);
-    console.log("statusText: ", typeof statusText);
-    userProfileAPI.updateUserStatus(statusText).then((responce) => {
-      if (responce.data.resultCode === 0) {
-        dispatch(setUserProfile(statusText));
-      }
-    });
-  };
+export const updateProfileStatus = (statusText) => async (dispatch) => {
+  const responce = await userProfileAPI.updateUserStatus(statusText);
+  if (responce.data.resultCode === 0) dispatch(setUserProfile(statusText));
 };
 
 let initialState = {

@@ -8,35 +8,32 @@ export const setAuthUserData = (userId, login, email, isAuthorized) => ({
   data: { userId, login, email, isAuthorized },
 });
 
-export const getAuthUserData = () => (dispatch) => {
-  return authAPI.isAuthorized().then((responce) => {
-    if (responce.resultCode === 0) {
-      let { id, login, email } = responce.data;
-      dispatch(setAuthUserData(id, email, login, true));
-    }
-  });
+export const getAuthUserData = () => async (dispatch) => {
+  const responce = await authAPI.isAuthorized();
+  if (responce.resultCode === 0) {
+    let { id, login, email } = responce.data;
+    dispatch(setAuthUserData(id, email, login, true));
+  }
 };
 
-export const login = (email, password, rememberMe) => (dispatch) => {
-  authAPI.login(email, password, rememberMe).then((responce) => {
-    if (responce.data.resultCode === 0) {
-      dispatch(getAuthUserData());
-    } else {
-      let infoErrorMessage =
-        responce.data.messages.length > 0
-          ? responce.data.messages[0]
-          : "unknown error";
-      dispatch(stopSubmit("login", {_error: infoErrorMessage }));
-    }
-  });
+export const login = (email, password, rememberMe) => async (dispatch) => {
+  const responce = await authAPI.login(email, password, rememberMe)
+  if (responce.data.resultCode === 0) {
+    dispatch(getAuthUserData());
+  } else {
+    let infoErrorMessage =
+      responce.data.messages.length > 0
+        ? responce.data.messages[0]
+        : "unknown error";
+    dispatch(stopSubmit("login", { _error: infoErrorMessage }));
+  }
 };
 
-export const logout = () => (dispatch) => {
-  authAPI.logout().then((responce) => {
-    if (responce.data.resultCode === 0) {
-      dispatch(setAuthUserData(null, null, null, false));
-    }
-  });
+export const logout = () => async (dispatch) => {
+  const responce = await authAPI.logout()
+  if (responce.data.resultCode === 0) {
+    dispatch(setAuthUserData(null, null, null, false));
+  }
 };
 
 let initialState = {
